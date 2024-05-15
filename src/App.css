@@ -11,24 +11,36 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .square_container {
-  border: 1px solid black;
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  border: 2px solid white;
   border-radius: 10px;
 }
 
+.square_container.custom_grid > .square:nth-child(1),
+.square_container.custom_grid > .square:nth-child(2),
+.square_container.custom_grid > .square:nth-child(3),
+.square_container.custom_grid > .square:nth-child(4) {
+  grid-column: span 1;
+}
+
+.square_container.custom_grid > .square:nth-child(5) {
+  grid-column-start: 1;
+}
+
 .square {
-  margin-right: 5px;
-  margin-bottom: 10px;
-  padding: 10px;
-  height: 60px;
+  box-sizing: border-box;
   width: 60px;
+  height: 60px;
   cursor: pointer;
   border-radius: 10px;
+  padding: 7px;
 }
 
 .square_index {

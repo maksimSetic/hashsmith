@@ -95,13 +95,16 @@ const App = () => {
   ];
 
   return (
-    <div className="app">
+    <><div className="app">
       <h1 className="d-flex justify-content-center pad_title">
         {jsonData["19"] && jsonData["19"].name}
       </h1>
       <div className="square_container_wrapper">
         {containers.map((container) => (
-          <div key={container.id} className="square_container">
+          <div
+            key={container.id}
+            className={`square_container ${container.id <= 3 ? "custom_grid" : ""}`}
+          >
             {jsonData["19"].values
               .filter((data) => data.pdu === container.id && data.port)
               .slice(0, container.id <= 3 ? 13 : undefined)
@@ -109,18 +112,16 @@ const App = () => {
                 <Square
                   key={index}
                   data={square}
-                  onModalOpen={handleModalOpen}
-                />
+                  onModalOpen={handleModalOpen} />
               ))}
           </div>
         ))}
       </div>
-
-      <div
-        className="modal"
-        tabIndex="-1"
-        style={{ display: modalData ? "block" : "none" }}
-      >
+    </div><div
+      className="modal"
+      tabIndex="-1"
+      style={{ display: modalData ? "block" : "none" }}
+    >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header d-flex justify-content-center">
@@ -161,8 +162,7 @@ const App = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div></>
   );
 };
 
