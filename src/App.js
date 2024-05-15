@@ -96,9 +96,9 @@ const App = () => {
 
   return (
     <><div className="app">
-      <h1 className="d-flex justify-content-center pad_title">
+      <h2 className="d-flex justify-content-center pad_title">
         {jsonData["19"] && jsonData["19"].name}
-      </h1>
+      </h2>
       <div className="square_container_wrapper">
         {containers.map((container) => (
           <div
